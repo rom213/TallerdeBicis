@@ -49,6 +49,10 @@ const Repair= dbRepairs.define('users',{
     status: {
         type: DataTypes.STRING,
         defaultValue:'PENDING'
+    },
+    userId:{
+        type: DataTypes.NUMBER,
+        allowNull: false,
     }
 })
 
