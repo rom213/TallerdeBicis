@@ -31,7 +31,7 @@ const User= dbUsers.define('users',{
     }
 })
 
-const Repair= dbRepairs.define('users',{
+const Repair= dbRepairs.define('repairs',{
     id:{
         primaryKey:true,
         autoIncrement:true,

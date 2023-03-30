@@ -22,7 +22,7 @@ exports.existUser=async (req,res,next)=>{
 
 exports.existRepair=async (req,res,next)=>{
     const { id }=req.params
-    const user= await User.findOne({
+    const client= await User.findOne({
         where:{
             status:'AVAILABLE',
             role:'CLIENT',
@@ -35,7 +35,7 @@ exports.existRepair=async (req,res,next)=>{
             id,
         }
     });
-    if (!user) {
+    if (!client) {
         return res.status(404).json({
             status:'error',
             messaje:'User not found',
