@@ -1,17 +1,7 @@
 const express=require('express');
-const { controllerUsers, controllerRepairs }=require('../controller/workshop.controller')
-const { existUser, existRepair }=require('../midleware/workshop.midlewares')
+const { controllerRepairs }=require('../controller/workshop.controller')
+const { existRepair }=require('../midleware/workshop.midlewares')
 const Router=express.Router();
-
-
-
-Router.route('/users')
-    .get(controllerUsers.findAllUsers)
-    .post(controllerUsers.createUser)
-Router.route('/users/:id')
-    .get(existUser, controllerUsers.findOneUser)
-    .patch(existUser, controllerUsers.updateUser)
-    .delete(existUser, controllerUsers.deleteUser)
 
 
 Router.route('/repairs')

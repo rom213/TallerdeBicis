@@ -1,16 +1,15 @@
 const {DataTypes, STRING}= require('sequelize')
-const {dbRepairs}=require('../database/config')
+const { dbUsers }=require('../database/config')
 
 
-
-const Repair= dbRepairs.define('repairs',{
+const User= dbUsers.define('users',{
     id:{
         primaryKey:true,
         autoIncrement:true,
         allowNull:false,
         type:DataTypes.INTEGER
     },
-    date: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -18,17 +17,21 @@ const Repair= dbRepairs.define('repairs',{
         type: DataTypes.STRING,
         allowNull: false
     },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    role: {
+        type: DataTypes.STRING,
+        allowNull:false,
+        defaultValue:'CLIENT'
+    },
     status: {
         type: DataTypes.STRING,
-        defaultValue:'PENDING'
-    },
-    userId:{
-        type: DataTypes.NUMBER,
-        allowNull: false,
+        defaultValue:'AVAILABLE'
     }
 })
 
-
 module.exports = {
-    Repair,
+    User
 }

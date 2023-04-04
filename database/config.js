@@ -10,6 +10,7 @@ const dbUsers= new Sequelize({
     port:process.env.DB_PORT,
     logging:false, 
     })
+    
 const dbRepairs= new Sequelize({
         dialect:process.env.DB_DIALECT,
         host:process.env.DB_HOST,
