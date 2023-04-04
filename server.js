@@ -7,7 +7,7 @@ db.authenticate('')
       console.log('database Reapirs Autenticate 🤩')
     })
     .catch((err)=>console.log(err))
-db.sync({force:true})
+db.sync()
     .then(()=>console.log('database Repairs since'))
     .catch((err)=>console.log(err))
 
