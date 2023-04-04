@@ -8,7 +8,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 
-app.use('/api/v1', RouterW);
-app.use('/api/v1', RouterU);
+app.use('/api/v1/workshop', RouterW);
+app.use('/api/v1/user', RouterU);
 
 module.exports=app;

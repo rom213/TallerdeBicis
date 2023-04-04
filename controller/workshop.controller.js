@@ -1,4 +1,4 @@
-const { Repair} = require('../models/workshop.model');
+const { Repair } = require('../models/workshop.model');
 
 
 

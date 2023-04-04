@@ -1,14 +1,16 @@
 const express=require('express');
 const { controllerUsers }=require('../controller/user.controller')
 const { existUser }=require('../midleware/workshop.midlewares')
-const Router=express.Router();
+const RouterU=express.Router();
 
 
 
-Router.route('/users')
+RouterU.route('/')
     .get(controllerUsers.findAllUsers)
     .post(controllerUsers.createUser)
-Router.route('/users/:id')
+RouterU.route(' /:id')
     .get(existUser, controllerUsers.findOneUser)
     .patch(existUser, controllerUsers.updateUser)
     .delete(existUser, controllerUsers.deleteUser)
+
+    module.exports=RouterU

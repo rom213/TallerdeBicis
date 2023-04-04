@@ -1,8 +1,8 @@
-const {DataTypes, STRING}= require('sequelize')
-const { dbUsers }=require('../database/config')
+const {DataTypes}= require('sequelize')
+const { db }=require('../database/config')
 
 
-const User= dbUsers.define('users',{
+const User = db.define('users',{
     id:{
         primaryKey:true,
         autoIncrement:true,
@@ -15,7 +15,7 @@ const User= dbUsers.define('users',{
     },
     email:{
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     password: {
         type: DataTypes.STRING,

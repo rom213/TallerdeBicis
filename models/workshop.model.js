@@ -1,9 +1,9 @@
 const {DataTypes, STRING}= require('sequelize')
-const {dbRepairs}=require('../database/config')
+const { db }=require('../database/config')
 
 
 
-const Repair= dbRepairs.define('repairs',{
+const Repair= db.define('repairs',{
     id:{
         primaryKey:true,
         autoIncrement:true,
@@ -14,16 +14,12 @@ const Repair= dbRepairs.define('repairs',{
         type: DataTypes.STRING,
         allowNull: false,
     },
-    email:{
-        type: DataTypes.STRING,
-        allowNull: false
-    },
     status: {
         type: DataTypes.STRING,
         defaultValue:'PENDING'
     },
     userId:{
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
     }
 })

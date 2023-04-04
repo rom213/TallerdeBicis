@@ -1,5 +1,5 @@
-const {Repair}=require('../models/workshop.model')
-const {User}=require('../models/user.model')
+const { Repair }=require('../models/workshop.model')
+const { User }=require('../models/user.model')
 
 exports.existUser=async (req,res,next)=>{
     const { id }=req.params
