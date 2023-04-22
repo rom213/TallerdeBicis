@@ -1,13 +1,20 @@
 const { Repair }=require('../models/workshop.model')
-const { User }=require('../models/user.model')
+const { User }=require('../models/user.model');
+const catchAsync = require('../utils/catchAsync');
 
-exports.existUser=async (req,res,next)=>{
+exports.existUser=catchAsync(async (req,res,next)=>{
     const { id }=req.params
     const user= await User.findOne({
         where:{
             status:'AVAILABLE',
             id,
-        }
+        },
+        include:[
+            {
+                model:Repair
+            }
+        ],
+        attributes:{exclude:['password','status']}
     });
 
     if (!user) {
@@ -19,9 +26,9 @@ exports.existUser=async (req,res,next)=>{
 
     req.user=user;
     next();
-}
+})
 
-exports.existRepair=async (req,res,next)=>{
+exports.existRepair=catchAsync(async (req,res,next)=>{
     const { id }=req.params
     const client= await User.findOne({
         where:{
@@ -53,7 +60,7 @@ exports.existRepair=async (req,res,next)=>{
 
     req.repair=repair;
     next();
-}
+})
 
 
 

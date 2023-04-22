@@ -51,8 +51,8 @@ exports.protectAccountOwner = catchAsync(async (req, res, next) => {
 exports.protectEmployedAccountOwner=catchAsync(async(req,res,next)=>{
     const user=req.sessionUser
         console.log(user.role);
-        if (user.role!='Employe') {
-            return next(new AppError(''))
+        if (user.role!='EMPLOYED') {
+            return next(new AppError('no autorizado'))
         }
     next()
 })

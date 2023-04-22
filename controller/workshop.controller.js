@@ -1,22 +1,33 @@
+const { User } = require('../models/user.model');
 const { Repair } = require('../models/workshop.model');
+const catchAsync = require('../utils/catchAsync');
 
 
 
 const controllerRepairs = {
-  findAllRepairs: async (req, res) => {
+  findAllRepairs: catchAsync( async (req, res) => {
     const repair = await Repair.findAll({
       where: {
         status: 'PENDING',
       },
+      include:[
+        {
+          model:User,
+          attributes:{exclude:['password','status','createdAt','updatedAt']}
+        }
+      ],
+      attributes:{exclude:['createdAt','updatedAt']}
     });
+
+
     res.status(200).json({
       status: 'success',
       message: 'all repairs',
       repair,
     });
-  },
+  }),
 
-  createRepair: async (req, res) => {
+  createRepair:catchAsync(  async (req, res) => {
     const { date, userId } = req.body;
 
     const repair = await Repair.create({
@@ -30,9 +41,9 @@ const controllerRepairs = {
         'Hello your product create success',
       repair,
     });
-  },
+  }),
 
-  updateRepair: async (req, res) => {
+  updateRepair:catchAsync(  async (req, res) => {
     const { repair } = req;
     const { status } = req.body;
 
@@ -42,9 +53,9 @@ const controllerRepairs = {
       status: 'success',
       message: 'repair seccessful',
     });
-  },
+  }),
 
-  deleteRepair: async (req, res) => {
+  deleteRepair: catchAsync( async (req, res) => {
     const { repair } = req;
     await repair.update({
       status: 'CANCELED',
@@ -52,16 +63,16 @@ const controllerRepairs = {
     res.status(200).json({
       message: 'canceled the repair',
     });
-  },
+  }),
 
-  findOneRepair: async (req, res) => {
+  findOneRepair:catchAsync(async (req, res) => {
     const { repair } = req;
     res.status(200).json({
       status: 'success',
       message: 'one product',
       repair,
     });
-  },
+  }),
 };
 
 module.exports = {
